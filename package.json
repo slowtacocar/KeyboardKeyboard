@@ -1,0 +1,17 @@
+{
+  "name": "keyboardkeyboard",
+  "version": "0.1.0",
+  "private": true,
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended"
+    ],
+    "env": {
+      "es6": true,
+      "browser": true
+    }
+  },
+  "devDependencies": {
+    "eslint": "^7.19.0"
+  }
+}
