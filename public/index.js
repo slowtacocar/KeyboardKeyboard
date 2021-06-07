@@ -22,7 +22,7 @@ window.setInterval(() => {
     lastNote = -1
   }
   note = note >= 16 ? 1 : note + 1
-}, 120)
+}, 200)
 
 document.getElementById("text").addEventListener("input", (event) => {
   const charCode = event.data.charCodeAt(0)
