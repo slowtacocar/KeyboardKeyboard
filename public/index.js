@@ -5,6 +5,11 @@ const toPause = []
 let pause = false
 let note = 1
 
+for (let i = 0; i < 25; i++) {
+  const audio = new Audio(`audio/${i}.wav`)
+  audio.load()
+}
+
 window.setInterval(() => {
   if (lastNote >= 0) {
     if (note === 1) {
