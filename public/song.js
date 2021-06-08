@@ -22,6 +22,10 @@ document.getElementById("text").addEventListener("input", (event) => {
       pos = 0;
     }
   } else {
+    while (event.target.value.length < pos) {
+      i--;
+      pos = letters.slice(0, i).join("").length
+    }
     if (event.target.value[event.target.value.length - 1].toLowerCase() !== letters[i][event.target.value.length - pos - 1]) {
       const audio = new Audio(`audio/${Math.floor(Math.random() * 25)}.wav`)
       audio.play()
