@@ -1,43 +1,38 @@
-let chord = 0
-const chords = [0, 2, 4, 5, 7, 9, 11, 12]
-let lastNote = -1
-const toPause = []
-let pause = false
-let note = 1
+let root = 0;
+const intervals = [2, 2, 1, 2, 2, 2, 1];
+const roots = [0, 2, 4, 5, 7, 9, 11];
+let note = -1;
+const toPause = [];
+let beat = 1;
 
 for (let i = 0; i < 25; i++) {
-  const audio = new Audio(`audio/${i}.wav`)
-  audio.load()
+  const audio = new Audio(`audio/${i}.wav`);
+  audio.load();
 }
 
 window.setInterval(() => {
-  if (lastNote >= 0) {
-    if (note === 1) {
-      chord = chords[Math.floor(Math.random() * 8)]
-      lastNote = chord
+  if (note >= 0) {
+    if (beat === 1) {
+      root = Math.floor(Math.random() * 7);
+      note = roots[root];
     }
-    const audio = new Audio(`audio/${lastNote}.wav`)
-    audio.play()
-    if (note === 1) {
+    const audio = new Audio(`audio/${note}.wav`);
+    audio.play();
+    if (beat === 1) {
       while (toPause.length > 1) {
-        toPause.pop().pause()
+        toPause.pop().pause();
       }
     }
-    toPause.push(audio)
-    lastNote = -1
+    toPause.push(audio);
+    note = -1;
   }
-  note = note >= 16 ? 1 : note + 1
-}, 200)
+  beat = beat >= 16 ? 1 : beat + 1;
+}, 200);
 
 document.getElementById("text").addEventListener("input", (event) => {
-  const charCode = event.data.charCodeAt(0)
-  if (charCode % 4 === 0) {
-    lastNote = chord
-  } else if ((charCode + 1) % 4 === 0) {
-    lastNote = chord + 4
-  } else if ((charCode + 2) % 4 === 0) {
-    lastNote = chord + 7
-  } else if ((charCode + 3) % 4 === 0) {
-    lastNote = chord + 12
+  const charCode = event.data.charCodeAt(0);
+  note = roots[root];
+  for (let i = 0; i < charCode % 7; i++) {
+    note += intervals[(root + i) % 7];
   }
-})
+});
