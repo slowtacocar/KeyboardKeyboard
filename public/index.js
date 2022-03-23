@@ -7,7 +7,7 @@ const toPause = [];
 let beat = 1;
 
 for (let i = 0; i < 25; i++) {
-  const audio = new Audio(`audio/${i}.mp3`);
+  const audio = new Audio(`audio/${i}.mpg`);
   audios.push(audio);
   audio.load();
 }
