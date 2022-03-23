@@ -5,7 +5,7 @@ let i = 0;
 let pos = 0;
 
 for (let i = 0; i < 25; i++) {
-  const audio = new Audio(`audio/${i}.mpg`)
+  const audio = new Audio(`audio/${i}.aac`)
   audios.push(audio)
   audio.load()
 }
@@ -28,7 +28,7 @@ document.getElementById("text").addEventListener("input", (event) => {
       pos = letters.slice(0, i).join("").length
     }
     if (event.target.value[event.target.value.length - 1].toLowerCase() !== letters[i][event.target.value.length - pos - 1]) {
-      const audio = new Audio(`audio/${Math.floor(Math.random() * 25)}.wav`)
+      const audio = audios[Math.floor(Math.random() * 25)]
       audio.play()
     }
   }
