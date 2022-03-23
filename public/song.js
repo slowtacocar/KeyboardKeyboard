@@ -15,6 +15,7 @@ document.getElementById("label").textContent = letters.join("");
 document.getElementById("text").addEventListener("input", (event) => {
   if (event.target.value.slice(pos).toLowerCase() === letters[i]) {
     pos = event.target.value.length;
+    audios[notes[i]].currentTime = 0
     audios[notes[i]].play()
     i++;
     if (i >= letters.length) {
@@ -29,6 +30,7 @@ document.getElementById("text").addEventListener("input", (event) => {
     }
     if (event.target.value[event.target.value.length - 1].toLowerCase() !== letters[i][event.target.value.length - pos - 1]) {
       const audio = audios[Math.floor(Math.random() * 25)]
+      audio.currentTime = 0;
       audio.play()
     }
   }

@@ -18,6 +18,7 @@ window.setInterval(() => {
       root = Math.floor(Math.random() * 7);
       note = roots[root];
     }
+    audios[note].currentTime = 0
     audios[note].play();
     if (beat === 1) {
       while (toPause.length > 1) {
